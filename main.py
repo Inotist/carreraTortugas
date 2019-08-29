@@ -1,11 +1,12 @@
 import turtle
 import math
 import random
+import sys
 
 class Circuito:
     corredores = []
     
-    def __init__(self, width, height, *colors):
+    def __init__(self, width, height, colors=None):
         self.__startLine = int(-width/2 + width*0.05)
         self.__finishLine = int(width/2 - width*0.05)
         
@@ -50,5 +51,12 @@ class Circuito:
         
         
 if __name__ == '__main__':
-    circuito = Circuito(640, 480, 'red', 'blue', 'green', 'orange')
+    if len(sys.argv) < 2: circuito = Circuito(640, 480, ('red', 'blue', 'green', 'orange'))
+    else:
+        colors = []
+        for color in sys.argv:
+            if color == sys.argv[0]:
+                pass
+            else: colors.append(color)
+        circuito = Circuito(640, 480, colors)
     circuito.competir()
