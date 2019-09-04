@@ -7,8 +7,8 @@ class Circuito:
     corredores = []
     
     def __init__(self, width, height, colors=None):
-        self.__startLine = int(-width/2 + width*0.05)
-        self.__finishLine = int(width/2 - width*0.05)
+        self.__startLine = -width / 2 * 0.95
+        self.__finishLine = width / 2 * 0.95
         
         self.__printScreen(width, height)
         
@@ -55,8 +55,7 @@ if __name__ == '__main__':
     else:
         colors = []
         for color in sys.argv:
-            if color == sys.argv[0]:
-                pass
-            else: colors.append(color)
+            if color != sys.argv[0]:
+                colors.append(color)
         circuito = Circuito(640, 480, colors)
     circuito.competir()
